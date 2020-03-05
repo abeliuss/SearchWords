@@ -1,2 +1,5 @@
 .vs/
 SearchWords/obj/
+packages/
+SearchWords.Tests/bin/
+SearchWords.Tests/obj/
