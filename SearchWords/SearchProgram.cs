@@ -9,7 +9,7 @@ namespace SearchWords
         private readonly string _path;
         private readonly IFileSystem _fileSystem;
 
-        public SearchProgram(string path, IFileSystem fileSystem)
+        internal SearchProgram(string path, IFileSystem fileSystem)
         {
             this._path = path;
             _fileSystem = fileSystem;

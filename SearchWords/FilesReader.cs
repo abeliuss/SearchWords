@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SearchWords
 {
-    public class FilesReader
+    internal class FilesReader
     {
 
     }
