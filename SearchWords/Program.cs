@@ -12,7 +12,8 @@ namespace SearchWords
         static void Main(string[] args)
         {
             var path = args[0];
-            var searcher = new SearchProgram(path, new FileSystem());
+            var search = new SearchProgram(path, new FileSystem());
+            Console.WriteLine( $"{search.FilesFoundCount()} files read in directory {path}");
         }
     }
 }
