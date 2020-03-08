@@ -16,14 +16,37 @@ namespace SearchWords
             Console.WriteLine( $"{search.FilesFoundCount()} files read in directory {path}");
             while (true)
             {
-                Console.WriteLine();
-                Console.Write("search> ");
-                var searchWord = Console.ReadLine();
+                var searchWord = GetSearchWord();
                 if (!string.IsNullOrEmpty(searchWord))
                 {
-                    var results = search.SearchWord(searchWord);
+                    DisplayResults(search, searchWord);
                 }
             }
+        }
+
+        private static void DisplayResults(SearchProgram search, string searchWord)
+        {
+            const int topFiles = 10;
+            var filesFound = search.SearchWord(searchWord, topFiles).ToList();
+            if (filesFound.Any())
+            {
+                foreach (var file in filesFound)
+                {
+                    Console.WriteLine($"{file.Name}:{file.Occurrences(searchWord)} occurrences");
+                }
+            }
+            else
+            {
+                Console.WriteLine("no matches found");
+            }
+        }
+
+        private static string GetSearchWord()
+        {
+            Console.WriteLine();
+            Console.Write("search> ");
+            var searchWord = Console.ReadLine();
+            return searchWord;
         }
     }
 }

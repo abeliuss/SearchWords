@@ -28,9 +28,10 @@ namespace SearchWords
             return _filesFound.Count();
         }
 
-        internal IEnumerable<string> SearchWord(string searchWord)
+        internal IEnumerable<TextFile> SearchWord(string searchWord, int topFilesNumber)
         {
-            throw new NotImplementedException();
+          return _filesFound.OrderByDescending(x => x.Occurrences(searchWord)).Take(topFilesNumber);
+          
         }
     }
 }

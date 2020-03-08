@@ -10,10 +10,10 @@ namespace SearchWords
 {
    internal class TextFile
     {
-        public TextFile(string file, string content)
+        public TextFile(string fileName, string content)
         {
             Content = content;
-            Name = file;
+            Name = fileName;
         }
 
         public string Name { get; }
