@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO.Abstractions;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SearchWords
 {
@@ -11,17 +8,23 @@ namespace SearchWords
     {
         static void Main(string[] args)
         {
-            var path = args[0];
-            var search = new SearchProgram(path, new FileSystem());
-            Console.WriteLine( $"{search.FilesFoundCount()} files read in directory {path}");
-            while (true)
+            if (args.Length>0)
             {
-                var searchWord = GetSearchWord();
-                if (!string.IsNullOrEmpty(searchWord))
+                var path = args[0];
+                var search = new SearchProgram(path, new FileSystem());
+                Console.WriteLine( $"{search.FilesFoundCount()} files read in directory {path}");
+                while (true)
                 {
-                    DisplayResults(search, searchWord);
+                    var searchWord = GetSearchWord();
+                    if (!string.IsNullOrEmpty(searchWord))
+                    {
+                        DisplayResults(search, searchWord);
+                    }
                 }
             }
+
+            Console.WriteLine("Path argument need to be supplied");
+            Console.ReadKey();
         }
 
         private static void DisplayResults(SearchProgram search, string searchWord)
