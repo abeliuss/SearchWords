@@ -10,12 +10,22 @@ namespace SearchWords
             Name = fileName;
         }
 
+        private string _lastWord;
+        private int _lastOccurrences;
+
         public string Name { get; }
         public string Content { get; }
 
         internal int Occurrences(string word)
         {
-            return Regex.Matches(Content, word).Count;
+            if (word == _lastWord)
+            {
+                return _lastOccurrences;
+            }
+            _lastOccurrences = Regex.Matches(Content, word).Count;
+            _lastWord = word;
+
+            return _lastOccurrences;
         }
     }
 }
