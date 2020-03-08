@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace SearchWords
@@ -20,7 +21,7 @@ namespace SearchWords
 
         internal int Occurrences(string word)
         {
-            throw new NotImplementedException();
+            return Regex.Matches(Content, word).Count;
         }
     }
 }
