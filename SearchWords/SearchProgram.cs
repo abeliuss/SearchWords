@@ -28,5 +28,9 @@ namespace SearchWords
             return _filesFound.Count();
         }
 
+        internal IEnumerable<string> SearchWord(string searchWord)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

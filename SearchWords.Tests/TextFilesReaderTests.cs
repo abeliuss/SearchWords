@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.IO.Abstractions;
 using System.Linq;
-using System.Net.Mime;
 using FluentAssertions;
 using NSubstitute;
 using Xunit;
@@ -61,5 +58,28 @@ namespace SearchWords.Tests
             file2.Content.Should().Be(content);
         }
 
+        [Fact]
+        public void When_SearchWords_Should_Found_Words()
+        {
+            //Arrange
+            const string file1Name = "file1";
+           
+            string[] files = { file1Name };
+            const string content = "word1 word2 word1";
+            var mockFilesystem = Substitute.For<IFileSystem>();
+            mockFilesystem.Directory.GetFiles(Arg.Any<string>(), Arg.Any<string>()).Returns(files);
+            mockFilesystem.File.ReadAllText(Arg.Any<string>()).Returns(content);
+
+            var filesReader = new TextFilesReader(mockFilesystem);
+
+            //Act
+            var resultFiles = filesReader.ReadFiles("").ToList();
+
+            //Assert
+            resultFiles.Count().Should().Be(1);
+            var file1 = resultFiles.Single(x => x.Name == file1Name);
+            file1.Content.Should().Be(content);
+            file1.Occurrences("word1").Should().Be(2);
+        }
     }
 }

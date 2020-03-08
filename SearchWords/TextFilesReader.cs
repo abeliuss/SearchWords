@@ -17,7 +17,8 @@ namespace SearchWords
         internal IEnumerable<TextFile> ReadFiles(string path)
         {
             var textFiles = new List<TextFile>();
-            var files = _fileSystem.Directory.GetFiles(path, "*.txt");
+            const string searchPattern = "*.txt";
+            var files = _fileSystem.Directory.GetFiles(path, searchPattern);
 
             foreach (var file in files)
             {

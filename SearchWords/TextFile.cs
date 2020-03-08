@@ -17,5 +17,10 @@ namespace SearchWords
 
         public string Name { get; }
         public string Content { get; }
+
+        internal int Occurrences(string word)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

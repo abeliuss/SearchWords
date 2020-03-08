@@ -14,6 +14,16 @@ namespace SearchWords
             var path = args[0];
             var search = new SearchProgram(path, new FileSystem());
             Console.WriteLine( $"{search.FilesFoundCount()} files read in directory {path}");
+            while (true)
+            {
+                Console.WriteLine();
+                Console.Write("search> ");
+                var searchWord = Console.ReadLine();
+                if (!string.IsNullOrEmpty(searchWord))
+                {
+                    var results = search.SearchWord(searchWord);
+                }
+            }
         }
     }
 }

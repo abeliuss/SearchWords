@@ -13,7 +13,7 @@ namespace SearchWords.Tests
     public class SearchProgramTests
     {
         [Fact]
-        public void When_Search_WithFiles_Should_Count_Files_Read()
+        public void When_Read_WithFiles_Should_Count_Files_Read()
         {
             //Arrange
             string[] files = { "file1", "file2" };
@@ -28,7 +28,7 @@ namespace SearchWords.Tests
         }
 
         [Fact]
-        public void When_Search_WithoutFiles_Should_Count_NoFiles_Read()
+        public void When_Read_WithoutFiles_Should_Count_NoFiles_Read()
         {
             //Arrange
             string[] files = { };
