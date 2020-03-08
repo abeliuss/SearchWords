@@ -24,8 +24,8 @@ namespace SearchWords
             {
                 try
                 {
-                    var content = ReadFileContent(Path.Combine(path, file));
-                    var textFile = new TextFile(file, content);
+                    var content = ReadFileContent(file);
+                    var textFile = new TextFile(Path.GetFileNameWithoutExtension(file), content);
                     textFiles.Add(textFile);
                 }
                 catch (Exception e)

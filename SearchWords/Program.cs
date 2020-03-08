@@ -15,7 +15,7 @@ namespace SearchWords
                 Console.WriteLine( $"{search.FilesFoundCount()} files read in directory {path}");
                 while (true)
                 {
-                    var searchWord = GetSearchWord();
+                    var searchWord = GetSearchWordFromUser();
                     if (!string.IsNullOrEmpty(searchWord))
                     {
                         DisplayResults(search, searchWord);
@@ -35,7 +35,7 @@ namespace SearchWords
             {
                 foreach (var file in filesFound)
                 {
-                    Console.WriteLine($"{file.Name}:{file.Occurrences(searchWord)} occurrences");
+                    Console.WriteLine($"{file.Name} : {file.Occurrences(searchWord)} occurrences");
                 }
             }
             else
@@ -44,7 +44,7 @@ namespace SearchWords
             }
         }
 
-        private static string GetSearchWord()
+        private static string GetSearchWordFromUser()
         {
             Console.WriteLine();
             Console.Write("search> ");
