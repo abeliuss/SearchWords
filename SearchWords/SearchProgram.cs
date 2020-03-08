@@ -30,8 +30,8 @@ namespace SearchWords
 
         internal IEnumerable<TextFile> SearchWord(string searchWord, int topFilesNumber)
         {
-          return _filesFound.OrderByDescending(x => x.Occurrences(searchWord)).Take(topFilesNumber);
-          
+            return _filesFound.OrderByDescending(x => x.Occurrences(searchWord)).
+                    Take(topFilesNumber).TakeWhile(x => x.Occurrences(searchWord) > 0);
         }
     }
 }
